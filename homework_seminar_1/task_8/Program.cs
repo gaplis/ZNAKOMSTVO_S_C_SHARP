@@ -10,10 +10,6 @@ while(one <= num)
     if (one % 2 == 0)
     {
         Console.Write($"{one} ");
-        one++;
     }
-    else 
-    {
-        one++;
-    }
+    one++;
 }
