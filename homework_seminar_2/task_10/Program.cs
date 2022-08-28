@@ -6,7 +6,7 @@ int num = int.Parse(Console.ReadLine());
 if (num < 1000 && num > 99)
 {
     int a2 = (num / 10) % 10;
-    Console.WriteLine($"Вторая цифра числа {num} = {a2}");
+    Console.WriteLine($"Вторая цифра числа {num} -> {a2}");
 }
 else
 {
