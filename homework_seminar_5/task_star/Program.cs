@@ -1,4 +1,4 @@
-﻿// Задача 36: Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечётных позициях.
+﻿// Задача "со звездочкой": Разобраться с алгоритмом сортировки методом пузырька. Реализовать невозрастающую сторировку.
 
 int[] InitArray(int N, int min, int max)
 {
@@ -10,14 +10,21 @@ int[] InitArray(int N, int min, int max)
     return arr;
 }
 
-int SumOdd(int [] array)
+void Sort(int [] array)
 {
-    int sum = 0;
-    for (int i = 0; i < array.Length; i++)
+    for (int i = 0; i < array.Length - 1; i++)
     {
-        if (i % 2 != 0) sum += array[i];
+        int minPosition = i;
+
+        for (int j = i + 1; j < array.Length; j++)
+        {
+            if(array[j] > array[minPosition]) minPosition = j;
+        }
+
+        int temp = array[i];
+        array[i] = array[minPosition];
+        array[minPosition] = temp;
     }
-    return sum;
 }
 
 Console.Write("Задайте размер массива: ");
@@ -36,8 +43,9 @@ if (size > 0)
         Console.Write("Массив: ");
         Console.WriteLine(String.Join(", ", myArray));
 
-        int result = SumOdd(myArray);
-        Console.WriteLine($"Сумма чисел на нечётных позициях: {result}");
+        Sort(myArray);
+        Console.Write("Невозрастающая сортировка массива: ");
+        Console.WriteLine(String.Join(", ", myArray));
     }
     else
     {
