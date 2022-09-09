@@ -37,7 +37,7 @@ else Console.WriteLine("Количество чисел не может быть
 
 // Тут была моя попытка реализовать функцию, которая и без дополнительных вопросов о количестве чисел сама бы их считала, 
 // но что-то у меня не особо получилось, полагаю дело в том, что я изначально задаю размер массива и дальше он не увеличивается,
-// а в варианте со строками даже не могу понять, почему после первого "Продолжить?" функция сразу же обрывается) 
+// а в варианте со строками не могу понять, почему не конвертируется в ToInt32) 
 // Но надеюсь, что я хотя бы шёл в правильном направлении)
 
 /* int [] UserArray2()
@@ -57,7 +57,7 @@ else Console.WriteLine("Количество чисел не может быть
     return array;
 }
 
-AboveZeroNumbers(UserArray2());
+AboveZeroNumbers(UserArray2()); 
 
 string UserArray3()
 {
@@ -67,15 +67,19 @@ string UserArray3()
     for (int i = 0; i < size; i++)
     {
         Console.Write($"Введите {i+1}-е число: ");
-        numbers += Console.Read();
+        numbers += Console.ReadLine();
         Console.Write("Продолжить?: ");
         yesOrNo = Console.ReadLine();
-        if (yesOrNo.ToLower() == "да") 
+        if ( yesOrNo.ToLower() == "да") 
         {
             numbers += ", ";
             size++;
         }
-        else break;
+        else 
+        {
+            Console.WriteLine(numbers);
+            break;
+        }
     }
     Console.WriteLine();
     return numbers;
