@@ -4,7 +4,6 @@
 // 4 5 6 -> 7 8 9 6 3 2 1 4 5
 // 7 8 9
 
-// Данную задачу у меня не получилось решить, но двигался я думаю в правильном направлении, хотя не понимаю что пошло не так, программа долго информацию прогружает и всё)
 // Гуглил и опирался на данную версию, но пытался адаптировать под нужды данной задачи https://www.haikson.com/programmirovanie/zapolnenie-dvumernoj-matritsyi-po-spirali/
 
 int [,] Array2D(int sizeString, int sizeColumns, int minValue, int maxValue)
