@@ -63,10 +63,9 @@ int [] StringArray(int [,] array2D)
         startJ++;
         endJ++;
         }
-        
+        array[iArray] = array2D[i, j];
+        iArray++;
     }
-    array[iArray] = array2D[i, j];
-    iArray++;
     return array;
 }
 
