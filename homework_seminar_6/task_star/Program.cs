@@ -4,7 +4,7 @@
 // 4 5 6 -> 7 8 9 6 3 2 1 4 5
 // 7 8 9
 
-// Данную задачу у меня не получилось решить, но двигался я думаю в правильном направлении, хотя не понимаю что пошло не так)
+// Данную задачу у меня не получилось решить, но двигался я думаю в правильном направлении, хотя не понимаю что пошло не так, программа долго информацию прогружает и всё)
 
 int [,] Array2D(int sizeString, int sizeColumns, int minValue, int maxValue)
 {
@@ -50,16 +50,18 @@ int [] StringArray(int [,] array2D)
     while (iArray < array.Length)
     {
         if (i == startI && j < array2D.GetLength(1) - endJ - 1) j++;
-        else if (j == array2D.GetLength(1) - endJ - 1 && i > 0) i--;
-        else if (i == 0 && j > 0) j--;
+        else if (j == array2D.GetLength(1) - endJ - 1 && i > array2D.GetLength(0) - endI - 1) i--;
+        else if (i == array2D.GetLength(0) - endI - 1 && j > startJ) j--;
         else i++;
 
 
-        if (i == startI - 1 && j == startJ)
+        if (i == startI - 1 && j == startJ && startJ != array2D.GetLength(1) - endJ - 1)
+        {
         startI--;
         endI--;
         startJ++;
         endJ++;
+        }
         
     }
     array[iArray] = array2D[i, j];
