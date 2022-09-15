@@ -1,10 +1,9 @@
-﻿// Задача 50. Напишите программу, которая на вход принимает число и генерирует случайный двумерный массив,
-// и возвращает индексы этого элемента или же указание, что такого элемента нет.
+﻿// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
 // Например, задан массив:
 // 1 4 7 2
 // 5 9 2 3
 // 8 4 2 4
-// 17 -> такого числа в массиве нет
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
 int[,] GetArray(int colString, int colColumnls, int minValue, int maxValue)
 {
@@ -31,16 +30,18 @@ void PrintArray(int[,] array)
     }
 }
 
-bool FindNumber(int[,] array, int number)
+double[] AverageArray(int[,] array)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    double[] result = new double[array.GetLength(1)];
+    for (int j = 0; j < array.GetLength(1); j++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int i = 0; i < array.GetLength(0); i++)
         {
-            if (array[i, j] == number) return true;
+            result[j] += array[i, j];
         }
+        result[j] /= array.GetLength(0);
     }
-    return false;
+    return result;
 }
 
 Console.Write("Задайте количество строк массива: ");
@@ -57,18 +58,12 @@ if (sizeString > 0 && sizeColumns > 0)
     Console.WriteLine();
     if (numMax >= numMin)
     {
-        Console.Write("Введите искомое число: ");
-        int findNum = int.Parse(Console.ReadLine());
-        Console.WriteLine();
-
         int[,] myArray = GetArray(sizeString, sizeColumns, numMin, numMax);
-
-
         PrintArray(myArray);
-        Console.WriteLine();
 
-        if (FindNumber(myArray, findNum)) Console.WriteLine($"Число {findNum} найдено!");
-        else Console.WriteLine($"Числа {findNum} нет в массиве.");
+        double[] resultArray = AverageArray(myArray);
+        Console.Write("Среднее арифметическое каждого столбца: ");
+        Console.WriteLine(String.Join(", ", resultArray));
     }
     else Console.WriteLine("Максимальное значение числа не может быть меньше минимального.");
 }
